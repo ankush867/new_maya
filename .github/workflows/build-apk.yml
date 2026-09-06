@@ -36,6 +36,7 @@ jobs:
           fi
           echo "ksp.use.ksp2=true" >> gradle.properties
           echo "kotlin.compiler.execution.strategy=in-process" >> gradle.properties
+          echo "android.disallowKotlinSourceSets=false" >> gradle.properties
 
       - name: Prepare Debug Keystore
         run: |
