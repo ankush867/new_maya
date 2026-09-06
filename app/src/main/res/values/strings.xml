@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Maya</string>
+    <string name="accessibility_service_description">Enables Maya Assistant to simulate user gestures such as entering your saved PIN or drawing your Pattern when you instruct Maya to unlock your phone.</string>
+</resources>
