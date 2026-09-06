@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '21'
           distribution: 'temurin'
@@ -34,6 +34,8 @@ jobs:
           if [ ! -f ".env" ]; then
             echo "GEMINI_API_KEY=dummy_key" > .env
           fi
+          echo "ksp.use.ksp2=true" >> gradle.properties
+          echo "kotlin.compiler.execution.strategy=in-process" >> gradle.properties
 
       - name: Prepare Debug Keystore
         run: |
