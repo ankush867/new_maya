@@ -37,6 +37,7 @@ jobs:
           echo "ksp.use.ksp2=true" >> gradle.properties
           echo "kotlin.compiler.execution.strategy=in-process" >> gradle.properties
           echo "android.disallowKotlinSourceSets=false" >> gradle.properties
+          echo "org.gradle.configuration-cache=false" >> gradle.properties
 
       - name: Prepare Debug Keystore
         run: |
@@ -54,7 +55,7 @@ jobs:
 
       - name: Build Debug APK
         run: |
-          ./gradlew :app:assembleDebug --no-daemon --stacktrace
+          ./gradlew :app:assembleDebug --no-daemon --no-configuration-cache --stacktrace
 
       - name: Verify and Prepare APK
         id: apk_info
@@ -76,7 +77,7 @@ jobs:
           retention-days: 30
 
       - name: Create GitHub Release and Publish APK
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ format('v1.0.{0}', github.run_number) }}
           name: ${{ format('Maya Assistant v1.0.{0}', github.run_number) }}
